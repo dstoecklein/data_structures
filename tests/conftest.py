@@ -1,7 +1,7 @@
 import pytest
 
-from doubly_linked_list import DoublyLinkedList
-from singly_linked_list import SinglyLinkedList
+from lists.doubly_linked_list import DoublyLinkedList
+from lists.singly_linked_list import SinglyLinkedList
 
 
 @pytest.fixture()

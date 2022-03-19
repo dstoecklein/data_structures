@@ -1,2 +1,2 @@
-# data_structures
-Basic data structures inPython
+# Data Structures
+Basic data structures in Python with Tests
