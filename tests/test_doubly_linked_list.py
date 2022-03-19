@@ -61,6 +61,7 @@ def test_deletion(filled_doubly_linked_list):
     assert list(filled_doubly_linked_list) == []
 
 
+
 def test_list_length(filled_doubly_linked_list):
     filled_doubly_linked_list.delete_front()
     assert len(filled_doubly_linked_list) == 7
