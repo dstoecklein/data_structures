@@ -7,7 +7,7 @@ class Node:
     def __repr__(self) -> str:
         return f'{self.data}'
 
-class DoublyLinkedList:
+class LinkedList:
     def __init__(self, init_nodes) -> None:
         self.head = None
         self.tail = None
@@ -133,7 +133,7 @@ class DoublyLinkedList:
 
 
 if __name__ == "__main__":
-    ll = DoublyLinkedList([1,2,3,4,5,7])
+    ll = LinkedList([1,2,3,4,5,7])
     ll.delete_end()
     ll.delete_front()
     ll.delete_with_key(6)
