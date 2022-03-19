@@ -2,12 +2,11 @@ from typing import List
 
 
 class Node:
-    def __init__(self, data, next=None, prev=None) -> None:
+    def __init__(self, data):
         self.data = data
-        self.next = next
-        self.prev = prev
+        self.next = None
 
-    def __repr__(self) -> str:
+    def __repr__(self):
         return f"{self.data}"
 
     def __eq__(self, other):
@@ -16,16 +15,16 @@ class Node:
         return None
 
 
-class DoublyLinkedList:
-    def __init__(self, init_nodes=None) -> None:
+class SinglyLinkedList:
+    def __init__(self, init_data=None):
         self.head = None
         self.tail = None
         self.length = 0  # type: int
         self.nodes = list()  # type: List[Node]
 
-        if init_nodes:
-            for node in init_nodes:
-                self.insert_end(node)
+        if init_data:
+            for data in init_data:
+                self.insert_end(data)
 
     def __node_iter(self):
         node = self.head
@@ -48,26 +47,24 @@ class DoublyLinkedList:
         self.length += 1
 
     def _delete_node(self, node):
+        if node is None:
+            return None
+
         if node in self.nodes:
             self.nodes.remove(node)
             self.length -= 1
         else:
             raise RuntimeError("Node not in list!")
 
-    def _link(self, node1, node2):
-        if node1:
-            node1.next = node2
-        if node2:
-            node2.prev = node1
-
     def get_nth(self, n):
-        curr = self.head
+        temp_head = self.head
         counter = 1
-        while curr is not None:
+        while temp_head is not None:
             if counter == n:
-                return curr  # return the node
-            curr = curr.next
+                return temp_head
+            temp_head = temp_head.next
             counter += 1
+        return None
 
     def get_nth_back(self, n):
         if self.length < n:
@@ -82,14 +79,14 @@ class DoublyLinkedList:
             self.head = node
             self.tail = node
         else:
-            self._link(self.tail, node)
+            self.tail.next = node
             self.tail = node
 
     def insert_front(self, data):
         node = Node(data)
         self._add_node(node)
 
-        self._link(node, self.head)
+        node.next = self.head
         self.head = node
 
         if self.length == 1:
@@ -107,20 +104,17 @@ class DoublyLinkedList:
                 if curr.data >= data:
                     node = Node(data)
                     self._add_node(node)
-                    self._link(node, curr)
-                    self._link(prev, node)
+                    node.next = curr
+                    prev.next = node
                     break
                 prev = curr
                 curr = curr.next
 
     def delete_front(self):
-        if not self.head:
-            return
+        temp_next = self.head.next
+        self._delete_node(temp_next)
 
-        new_head = self.head.next
-        self._delete_node(self.head)
-        self.head = new_head
-
+        self.head = temp_next
         if self.length <= 1:
             self.tail = self.head
 
@@ -128,11 +122,10 @@ class DoublyLinkedList:
         if self.length <= 1:
             self.delete_front()
             return
+        prev = self.get_nth(self.length - 1)
 
-        new_tail = self.get_nth(self.length - 1)
         self._delete_node(self.tail)
-
-        self.tail = new_tail
+        self.tail = prev
         self.tail.next = None
 
     def delete_with_key(self, data):
