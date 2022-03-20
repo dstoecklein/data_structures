@@ -182,22 +182,3 @@ class SparseMatrix:
 
             self_row_node.data.add(other=other_row_node.data)
             other_row_node = other_row_node.next
-
-if __name__ == "__main__":
-    mat1 = SparseMatrix(2,2)
-    mat1.set_value(0, 0, 1)
-    mat1.set_value(0, 1, 2)
-    mat1.set_value(1, 0, 3)
-    mat1.set_value(1, 1, 4)
-    mat1._print_as_2darray()
-
-    mat2 = SparseMatrix(2,2)
-    mat2.set_value(0, 0, 2)
-    mat2.set_value(0, 1, 4)
-    mat2.set_value(1, 0, 1)
-    mat2.set_value(1, 1, 3)
-    mat2._print_as_2darray()
-
-    mat2.add(mat1)
-    print(mat2)
-    mat2._print_as_2darray()
