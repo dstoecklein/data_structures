@@ -1,4 +1,4 @@
-class Node():
+class Node:
     def __init__(self, idx, data=None, next=None, prev=None):
         self.idx = idx
         self.data = data
@@ -6,21 +6,22 @@ class Node():
         self.prev = prev
 
     def __repr__(self) -> str:
-        return f'idx:{self.idx} data:{self.data}'
+        return f"idx:{self.idx} data:{self.data}"
 
-class SparseArray():
+
+class SparseArray:
     def __init__(self, array_length):
         self.tail = Node(idx=-1)
         self.head = Node(idx=-1)
-        self.length = 0 
+        self.length = 0
         self.array_length = array_length
 
     def __repr__(self):
-        string = ''
+        string = ""
         curr = self.head.next
 
         while curr is not None:
-            string += str(curr) + ', '
+            string += str(curr) + ", "
             curr = curr.next
 
         return string
@@ -75,7 +76,7 @@ class SparseArray():
         print()
 
     def set_value(self, idx, data):
-        assert 0 <= idx 
+        assert 0 <= idx
         assert idx < self.array_length
         node = self._get_node(idx=idx, create_if_missing=True)
         node.data = data
@@ -103,6 +104,7 @@ class SparseArray():
                 node.data += curr.data
             curr = curr.next
 
+
 class SparseMatrix:
     def __init__(self, rows, cols):
         self.rows_sparse_array = SparseArray(array_length=rows)
@@ -110,21 +112,21 @@ class SparseMatrix:
         self.cols = cols
 
     def __repr__(self):
-        string = ''
+        string = ""
         row_node = self.rows_sparse_array.head.next
 
         while row_node is not None:
-            if string != '':
-                string += '\n'
-            string += f'Row {row_node.idx}: '
+            if string != "":
+                string += "\n"
+            string += f"Row {row_node.idx}: "
             string += str(row_node.data)
             row_node = row_node.next
         return string
 
-    def _print_as_2darray(self, end='\n'):
+    def _print_as_2darray(self, end="\n"):
         row_node = self.rows_sparse_array.head.next
 
-        empty_row = ' '.join(['0'] * self.cols)
+        empty_row = " ".join(["0"] * self.cols)
 
         for r in range(self.rows):
             if row_node and row_node.idx == r:
@@ -173,9 +175,8 @@ class SparseMatrix:
         other_row_node = other.rows_sparse_array.head.next
         while other_row_node:
             self_row_node = self.rows_sparse_array._get_node(
-                idx=other_row_node.idx, 
-                create_if_missing=True
-                )
+                idx=other_row_node.idx, create_if_missing=True
+            )
 
             if self_row_node.data is None:
                 self_row_node.data = SparseArray(array_length=self.cols)

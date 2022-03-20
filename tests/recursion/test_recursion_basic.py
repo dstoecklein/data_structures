@@ -1,4 +1,5 @@
 from pytest import raises
+
 import recursion.basic as rb
 
 
@@ -18,6 +19,7 @@ def test_factorial_function():
     result = rb.factorial(n=0)
     expected = 1
     assert result == expected
+
 
 def test_factorial_raise_assert_error():
     with raises(AssertionError):
@@ -51,6 +53,7 @@ def test_fibonacci_function():
     expected = 55
     assert result == expected
 
+
 def test_fibonacci_raise_assert_error():
     with raises(AssertionError):
         rb.fibonacci(-4)
@@ -82,6 +85,7 @@ def test_sum_of_digits_function():
     result = rb.sum_of_digits(n=112)
     expected = 4
     assert result == expected
+
 
 def test_sum_of_digits_raise_assert_error():
     with raises(AssertionError):
@@ -115,6 +119,7 @@ def test_power_of_n_function():
     expected = 279936
     assert result == expected
 
+
 def test_power_of_n_raise_assert_error():
     with raises(AssertionError):
         rb.power_of_n(base=-4, exp=-2)
@@ -138,6 +143,7 @@ def test_gcd_function():
     result = rb.greatest_common_divisor(a=48, b=18)
     expected = 6
     assert result == expected
+
 
 def test_gcd_raise_assert_error():
     with raises(AssertionError):
@@ -175,6 +181,7 @@ def test_decimal_to_binary_function():
     result = rb.decimal_to_binary(n=1234469489123)
     expected = 10001111101101100000111011000100111100011
     assert result == expected
+
 
 def test_decimal_to_binary_raise_assert_error():
     with raises(AssertionError):

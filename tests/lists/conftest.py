@@ -31,11 +31,11 @@ def filled_doubly_linked_list():
 
 @pytest.fixture()
 def empty_sparse_matrix1():
-    empty_sparse_matrix1 = SparseMatrix(2,2)
+    empty_sparse_matrix1 = SparseMatrix(2, 2)
     return empty_sparse_matrix1
 
 
 @pytest.fixture()
 def empty_sparse_matrix2():
-    empty_sparse_matrix2 = SparseMatrix(2,2)
+    empty_sparse_matrix2 = SparseMatrix(2, 2)
     return empty_sparse_matrix2

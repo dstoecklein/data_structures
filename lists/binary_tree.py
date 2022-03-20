@@ -10,8 +10,6 @@
 #   Linked List
 #   Python List
 
-import queue
-
 
 class Node:
     def __init__(self, data):
@@ -46,7 +44,7 @@ class Node:
     def search(root, data):
         if not root:
             return "Binary Tree does not exist!"
-        
+
 
 tree = Node(2)
 left = Node(3)

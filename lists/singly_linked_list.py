@@ -56,6 +56,9 @@ class SinglyLinkedList:
         else:
             raise RuntimeError("Node not in list!")
 
+    def isEmpty(self):
+        return self.length == 0
+
     def get_nth(self, n):
         temp_head = self.head
         counter = 1
