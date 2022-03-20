@@ -2,7 +2,7 @@ import pytest
 
 from lists.doubly_linked_list import DoublyLinkedList
 from lists.singly_linked_list import SinglyLinkedList
-from lists.sparse_array import SparseMatrix
+from lists.sparse_matrix import SparseMatrix
 
 @pytest.fixture()
 def empty_singly_linked_list():
