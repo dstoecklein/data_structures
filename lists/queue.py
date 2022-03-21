@@ -1,7 +1,7 @@
-from singly_linked_list import SinglyLinkedList
+from lists.singly_linked_list import SinglyLinkedList  # type: ignore
 
 
-class Queue:
+class PythonListQueue:
     def __init__(self):
         self.items = []
 
@@ -10,10 +10,7 @@ class Queue:
         return " ".join(values)
 
     def isEmpty(self):
-        if self.items == []:
-            return True
-        else:
-            return False
+        return self.items == []
 
     # insert
     def enqueue(self, data):
@@ -34,15 +31,6 @@ class Queue:
     # delete all
     def delete(self):
         self.items = None
-
-
-q = Queue()
-print(q.isEmpty())
-q.enqueue(1)
-q.enqueue(2)
-q.enqueue(3)
-q.dequeue()
-print(q)
 
 
 # allocate only needed memory
@@ -109,17 +97,6 @@ class CircularQueue:
         self.start = -1
 
 
-print("===")
-cq = CircularQueue(3)
-print(cq.isFull())
-print(cq.isEmpty())
-cq.enqueue(1)
-cq.enqueue(2)
-cq.enqueue(3)
-cq.dequeue()
-print(cq)
-
-
 class LinkedListQueue:
     def __init__(self):
         self.linkedList = SinglyLinkedList()
@@ -132,7 +109,7 @@ class LinkedListQueue:
         return self.linkedList.isEmpty()
 
     def enqueue(self, data):
-        self.linkedList.insert_sorted(data)
+        self.linkedList.insert_end(data)
 
     def dequeue(self):
         if self.isEmpty():
@@ -147,15 +124,5 @@ class LinkedListQueue:
     def delete(self):
         self.linkedList.head = None
         self.linkedList.tail = None
-
-
-print("===")
-llq = LinkedListQueue()
-print(llq.isEmpty())
-llq.enqueue(1)
-llq.enqueue(2)
-llq.enqueue(3)
-print(llq)
-llq.dequeue()
-print(llq)
-print(llq.peek())
+        self.linkedList.length = 0
+        self.linkedList.nodes = list()
