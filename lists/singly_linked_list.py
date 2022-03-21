@@ -57,7 +57,7 @@ class SinglyLinkedList:
             raise RuntimeError("Node not in list!")
 
     def isEmpty(self):
-        return self.length == 0
+        return self.head is None or self.length <= 0
 
     def get_nth(self, n):
         temp_head = self.head
@@ -114,14 +114,17 @@ class SinglyLinkedList:
                 curr = curr.next
 
     def delete_front(self):
+        temp_head = self.head
         temp_next = self.head.next
         self._delete_node(temp_next)
 
         self.head = temp_next
         if self.length <= 1:
             self.tail = self.head
+        return temp_head
 
     def delete_end(self):
+        temp_tail = self.tail
         if self.length <= 1:
             self.delete_front()
             return
@@ -130,6 +133,7 @@ class SinglyLinkedList:
         self._delete_node(self.tail)
         self.tail = prev
         self.tail.next = None
+        return temp_tail
 
     def delete_with_key(self, data):
         if not self.length:

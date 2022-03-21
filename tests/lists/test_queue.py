@@ -1,19 +1,15 @@
 def test_python_list_queue_is_empty(empty_python_list_queue):
-    assert empty_python_list_queue.isEmpty() == True
+    assert empty_python_list_queue.isEmpty() is True
 
 
 def test_circular_queue_is_empty(empty_circular_queue):
-    assert empty_circular_queue.isEmpty() == True
-    assert empty_circular_queue.isFull() == False
+    assert empty_circular_queue.isEmpty() is True
+    assert empty_circular_queue.isFull() is False
 
 
 def test_circular_queue_is_full(full_circular_queue):
-    assert full_circular_queue.isEmpty() == False
-    assert full_circular_queue.isFull() == True
-
-
-def test_python_list_queue_is_empty(empty_python_list_queue):
-    assert empty_python_list_queue.isEmpty() == True
+    assert full_circular_queue.isEmpty() is False
+    assert full_circular_queue.isFull() is True
 
 
 def test_python_list_queue_function(empty_python_list_queue):
@@ -38,7 +34,7 @@ def test_python_list_queue_function(empty_python_list_queue):
     assert str(empty_python_list_queue) == "2 1 2 3 0 256 27891 21234654789798 test"
     assert str(empty_python_list_queue.peek()) == "2"
 
-    assert empty_python_list_queue.delete() == None
+    assert empty_python_list_queue.delete() is None
 
 
 def test_circular_queue_function(empty_circular_queue):
@@ -64,7 +60,7 @@ def test_circular_queue_function(empty_circular_queue):
     assert str(empty_circular_queue) == "None 2 1 2 3 0 256 27891 21234654789798 test"
     assert str(empty_circular_queue.peek()) == "2"
 
-    assert empty_circular_queue.delete() == None
+    assert empty_circular_queue.delete() is None
 
     assert empty_circular_queue.dequeue() == "Queue is empty!"
     assert empty_circular_queue.peek() == "Queue is empty!"
@@ -93,7 +89,7 @@ def test_linked_list_queue_function(empty_linked_list_queue):
     assert str(empty_linked_list_queue) == "2 1 2 3 0 256 27891 21234654789798 test"
     assert str(empty_linked_list_queue.peek()) == "2"
 
-    assert empty_linked_list_queue.delete() == None
+    assert empty_linked_list_queue.delete() is None
 
     assert empty_linked_list_queue.dequeue() == "Queue is empty!"
     assert empty_linked_list_queue.peek() == "Queue is empty!"

@@ -61,7 +61,7 @@ class DoublyLinkedList:
             node2.prev = node1
 
     def isEmpty(self):
-        return self.length == 0
+        return self.head is None or self.length == 0
 
     def get_nth(self, n):
         curr = self.head
